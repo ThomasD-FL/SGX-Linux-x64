@@ -7,6 +7,7 @@ Lösung out-of-tree driver for Linux SGX Software stack
 Software: VM - Box unter Windows 10 Pro
 Ubuntu mate 20.04
 Kernel schon gestript :)
+
 instalieren von Docker und Docker Compose
 
 > sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -54,7 +55,7 @@ Header - Dateien und los !
 > sudo mkdir -p "/lib/modules/"`uname -r`"/kernel/drivers/intel/sgx" 
 > sudo cp isgx.ko "/lib/modules/"`uname -r`"/kernel/drivers/intel/sgx"
  
- rüber copiert 
+ rüber kopiert 
 
 >sudo sh -c "cat /etc/modules | grep -Fxq isgx || echo isgx >> /etc/modules"
 >sudo /sbin/depmod
@@ -78,6 +79,7 @@ https://download.01.org/intel-sgx/sgx-linux/2.13/distro/ubuntu20.04-server/
 > sudo chmod +x sgx_linux_x64_driver_1.41.bin 
 
 zweiter Versuch,  Intel sagt kein support und ?
+
 > sudo ./sgx_linux_x64_driver_1.41.bin 
 
 
@@ -85,7 +87,7 @@ zweiter Versuch,  Intel sagt kein support und ?
 > sudo copy /usr/src/sgx-1.41/ o 1.41
 > sudo copy /usr/src/sgx-1.41/  1.41
 
-copieren 
+Kopieren 
 
 
 > sudo dkms add -m sgx -v 1.41
@@ -101,6 +103,7 @@ copieren
 > sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip
 
 Diese Dateien noch kopiert
+
 cp external/toolset/{current_distr}/{as,ld,ld.gold,objdump} /usr/local/bin
 
 
@@ -112,17 +115,21 @@ This repository supports to build the Intel(R) SGX SDK with below three combinat
     USE_OPT_LIBS=1 --- build SDK using optimized IPP crypto and open sourced String/Math
     USE_OPT_LIBS=2 --- build SDK with no mitigation using SGXSSL and optimized String/Math
     USE_OPT_LIBS=3 --- build SDK with no mitigation using IPP crypto and optimized String/Math
-    The default build uses USE_OPT_LIBS=1, if you directly type $ make sdk as above. You can switch to the other build combinations instead by entering the following command:
+    The default build uses USE_OPT_LIBS=1, if you directly type $ make sdk as above. 
+    You can switch to the other build combinations instead by entering the following command:
 
 
-> sudo make sdk USE_OPT_LIBS=1    ich habe hier 1 genommen
+> sudo make sdk USE_OPT_LIBS=1   
+
+ich habe hier 1 genommen
+
 > sudo make clean
 > sudo make sdk_install_pkg
 
 jetzt noch python und die Umgebung :
 
 > sudo apt-get install build-essential python
-> source ${sgx-sdk-install-path}/environmen    Ich hoffe Ihr habt der path
+> source ${sgx-sdk-install-path}/environmen    # Ich hoffe Ihr habt der path
 
 und jetzt der Test :
 
@@ -137,6 +144,7 @@ Succeed to exchange secure message...
 Succeed to close Session...
 
 geht :))
+Meine CPU wird nicht unterstuetzt aber mit dem Kernel geht es auch
 
 
 
