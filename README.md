@@ -15,7 +15,9 @@ instalieren von Docker und Docker Compose
 Weg mit den Altlasten
 
 > sudo apt-get update
+
 > curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
 > lsb_release -cs
 
 > echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
